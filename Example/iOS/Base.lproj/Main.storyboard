@@ -25,7 +25,7 @@
                                 </constraints>
                                 <collectionViewLayout key="collectionViewLayout" id="mFW-uC-hz5" customClass="HorizontalStickyHeaderLayout" customModule="HorizontalStickyHeaderLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="6vG-kf-2lN">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="6vG-kf-2lN" customClass="Cell" customModule="Example_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

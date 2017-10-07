@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Example_tvOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -29,13 +30,29 @@
                                 </constraints>
                                 <collectionViewLayout key="collectionViewLayout" id="a92-P8-oo6" customClass="HorizontalStickyHeaderLayout" customModule="HorizontalStickyHeaderLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="bqK-u0-8sq" customClass="Cell" customModule="Example" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="bqK-u0-8sq" customClass="Cell" customModule="Example_tvOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="258"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="258"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZ3-7B-3Ig">
+                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="97"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="gZ3-7B-3Ig" secondAttribute="height" multiplier="16:9" id="Bgt-bI-2IL"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="gZ3-7B-3Ig" firstAttribute="leading" secondItem="bqK-u0-8sq" secondAttribute="leading" id="1TN-bF-yRk"/>
+                                            <constraint firstAttribute="trailing" secondItem="gZ3-7B-3Ig" secondAttribute="trailing" id="RYT-sR-Kqc"/>
+                                            <constraint firstItem="gZ3-7B-3Ig" firstAttribute="top" secondItem="bqK-u0-8sq" secondAttribute="top" id="fRu-IN-49v"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageview" destination="gZ3-7B-3Ig" id="04S-8d-Q2I"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

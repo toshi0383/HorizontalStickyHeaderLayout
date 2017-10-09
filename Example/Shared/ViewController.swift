@@ -17,6 +17,30 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             }
         }
     }
+    private var items: [Int] = (0..<5).map { $0 }
+    @IBAction private func add() {
+        let ips = (0..<5).map { IndexPath(item: items.count, section: $0) }
+        items.append(items.count)
+        collectionView.insertItems(at: ips)
+    }
+    @IBAction private func delete() {
+        let ips = (0..<5).map { IndexPath(item: items.count - 1, section: $0) }
+        items.removeLast()
+        collectionView.deleteItems(at: ips)
+    }
+    @IBAction private func batchUpdate() {
+        let deletes = (0..<5).map { IndexPath(item: 2, section: $0) }
+        items.remove(at: 2)
+        let add1 = (0..<5).map { IndexPath(item: items.count, section: $0) }
+        items.append(items.count)
+        let add2 = (0..<5).map { IndexPath(item: items.count, section: $0) }
+        items.append(items.count)
+
+        collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: deletes)
+            self.collectionView.insertItems(at: add1 + add2)
+        }, completion: nil)
+    }
 //    @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
 //        didSet {
 //            layout.delegate = self
@@ -37,13 +61,13 @@ extension ViewController: UICollectionViewDataSource {
         return 5
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         cell.backgroundColor = .white
         #if os(tvOS)
-            cell.thumbnailURL = URL(string: "https://github.com/toshi0383/assets/raw/master/images/Italy\(indexPath.item + 1).jpg")!
+            cell.thumbnailURL = URL(string: "https://github.com/toshi0383/assets/raw/master/images/Italy\(items[indexPath.item] % 5 + 1).jpg")!
         #endif
         return cell
     }

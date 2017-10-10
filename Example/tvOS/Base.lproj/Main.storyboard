@@ -83,6 +83,24 @@
                                     <action selector="batchUpdate" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="2pM-5Q-Lf0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9z-nY-ki7">
+                                <rect key="frame" x="872" y="60" width="308" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="insertSection"/>
+                                <connections>
+                                    <action selector="addSection" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="GiG-S1-xHT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IM-52-rdv">
+                                <rect key="frame" x="1235" y="60" width="317" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="deleteSection"/>
+                                <connections>
+                                    <action selector="deleteSection" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="wX0-oz-uXL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

@@ -9,33 +9,60 @@
 import UIKit
 import HorizontalStickyHeaderLayout
 
+class Section {
+    var items: [Int]
+    init(items: [Int]) {
+        self.items = items
+    }
+}
+
 class ViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             if #available(iOS 11.0, *) {
                 collectionView.contentInsetAdjustmentBehavior = .never
             }
+            #if os(tvOS)
+                collectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            #endif
         }
     }
-    private var items: [Int] = (0..<5).map { $0 }
+    private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<1).map { $0 }) }
     @IBAction private func add() {
-        let ips = (0..<5).map { IndexPath(item: items.count, section: $0) }
-        items.append(items.count)
+        let ips = (0..<5).map { IndexPath(item: sections[$0].items.count, section: $0) }
+        for s in sections {
+            s.items.append(s.items.count)
+        }
         collectionView.insertItems(at: ips)
     }
     @IBAction private func delete() {
-        let ips = (0..<5).map { IndexPath(item: items.count - 1, section: $0) }
-        items.removeLast()
+        let ips = (0..<5).map { IndexPath(item: sections[$0].items.count - 1, section: $0) }
+        for s in sections {
+            s.items.removeLast()
+        }
         collectionView.deleteItems(at: ips)
     }
+    @IBAction private func addSection() {
+        sections.insert(Section(items: [0]), at: 0)
+        collectionView.insertSections(IndexSet(integer: 0))
+    }
+    @IBAction private func deleteSection() {
+        sections.remove(at: 0)
+        collectionView.deleteSections(IndexSet(integer: 0))
+    }
     @IBAction private func batchUpdate() {
-        let deletes = (0..<5).map { IndexPath(item: 2, section: $0) }
-        items.remove(at: 2)
-        let add1 = (0..<5).map { IndexPath(item: items.count, section: $0) }
-        items.append(items.count)
-        let add2 = (0..<5).map { IndexPath(item: items.count, section: $0) }
-        items.append(items.count)
-
+        let deletes = (0..<sections.count).map { IndexPath(item: 2, section: $0) }
+        for s in sections {
+            s.items.remove(at: 2)
+        }
+        let add1 = (0..<sections.count).map { IndexPath(item: sections[$0].items.count, section: $0) }
+        for s in sections {
+            s.items.append(s.items.count)
+        }
+        let add2 = (0..<sections.count).map { IndexPath(item: sections[$0].items.count, section: $0) }
+        for s in sections {
+            s.items.append(s.items.count)
+        }
         collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: deletes)
             self.collectionView.insertItems(at: add1 + add2)
@@ -58,16 +85,16 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return sections.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return sections[section].items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         cell.backgroundColor = .white
         #if os(tvOS)
-            cell.thumbnailURL = URL(string: "https://github.com/toshi0383/assets/raw/master/images/Italy\(items[indexPath.item] % 5 + 1).jpg")!
+            cell.thumbnailURL = URL(string: "https://github.com/toshi0383/assets/raw/master/images/Italy\(sections[indexPath.section].items[indexPath.item] % 5 + 1).jpg")!
         #endif
         return cell
     }
@@ -78,6 +105,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: HorizontalStickyHeaderLayoutDelegate
 extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     #if os(tvOS)
     private enum Const {
@@ -94,6 +122,8 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
         static let spacingForItems: CGFloat = 30
     }
     #endif
+
+    // Size
     func collectionView(_ collectionView: UICollectionView, hshlSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         if indexPath.section % 2 == 0 {
             return Const.itemSize0
@@ -104,15 +134,23 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, hshlSizeForHeaderAtSection section: Int) -> CGSize {
         return Const.headerSize
     }
-    func collectionView(_ collectionView: UICollectionView, hshlHeaderInsetsAtSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: Const.spacingForItems)
-    }
+
+    // Spacing
     func collectionView(_ collectionView: UICollectionView, hshlMinSpacingForCellsAtSection section: Int) -> CGFloat {
         return Const.spacingForItems
     }
-    func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
+
+    // Insets
+    func collectionView(_ collectionView: UICollectionView, hshlHeaderInsetsAtSection section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: Const.spacingForItems, bottom: 20, right: Const.spacingForItems)
     }
+    func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
+    }
+}
+
+// MARK: Focus
+extension ViewController {
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 
         self.collectionView.collectionViewLayout.invalidateLayout()

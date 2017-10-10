@@ -22,9 +22,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             if #available(iOS 11.0, *) {
                 collectionView.contentInsetAdjustmentBehavior = .never
             }
-            #if os(tvOS)
-                collectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-            #endif
         }
     }
     private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<1).map { $0 }) }
@@ -68,11 +65,14 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             self.collectionView.insertItems(at: add1 + add2)
         }, completion: nil)
     }
-//    @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
-//        didSet {
-//            layout.delegate = self
-//        }
-//    }
+    @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
+        didSet {
+            layout.delegate = self
+            #if os(tvOS)
+                layout.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            #endif
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self

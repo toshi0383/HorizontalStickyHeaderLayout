@@ -137,20 +137,20 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             var x: CGFloat = 0
             let headerSize = delegate.collectionView(cv, hshlSizeForHeaderAtSection: section)
             let headerInsets = delegate.collectionView(cv, hshlHeaderInsetsAtSection: section)
-            let minSpacingForCells: CGFloat = delegate.collectionView(cv, hshlMinSpacingForCellsAtSection: section)
+            let itemsInsets = delegate.collectionView(cv, hshlSectionInsetsAtSection: section)
             do {
                 let numberOfItems = cv.numberOfItems(inSection: section)
                 if let firstItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(item: 0, section: section) }),
                     let lastItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(row: numberOfItems - 1, section: section) }) {
 
                     let edgeX = cv.contentOffset.x + cv.contentInset.left + headerInsets.left
-                    let xByLeftBoundary = max(edgeX, firstItemAttributes.frame.minX)
+                    let xByLeftBoundary = max(edgeX, firstItemAttributes.frame.minX - itemsInsets.left + headerInsets.left)
 
-                    let xByRightBoundary = (lastItemAttributes.frame.maxX + minSpacingForCells) - headerSize.width - headerInsets.right
+                    let xByRightBoundary = (lastItemAttributes.frame.maxX + itemsInsets.right) - headerSize.width - headerInsets.right
                     x += min(xByLeftBoundary, xByRightBoundary)
                 }
             }
-            let frame = CGRect(x: x + headerInsets.left,
+            let frame = CGRect(x: x,
                                y: headerInsets.top,
                                width: headerSize.width,
                                height: headerSize.height)

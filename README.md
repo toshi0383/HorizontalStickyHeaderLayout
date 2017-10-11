@@ -46,6 +46,10 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
 }
 ```
 
+Optionally you can define `contentInset` for outer margin.
+
+![](https://github.com/toshi0383/assets/raw/master/HorizontalStickyHeaderLayout/layout-definitions.png)
+
 See [Example](Example) for detail.
 
 # Install

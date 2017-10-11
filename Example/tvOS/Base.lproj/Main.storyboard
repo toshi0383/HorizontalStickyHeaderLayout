@@ -112,6 +112,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="aoc-tg-B04" id="Ata-e8-h54"/>
+                        <outlet property="layout" destination="a92-P8-oo6" id="7GA-ib-73b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

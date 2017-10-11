@@ -29,6 +29,7 @@ public protocol HorizontalStickyHeaderLayoutDelegate: class {
 public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     private var cacheForItems = [Layout]()
     public weak var delegate: HorizontalStickyHeaderLayoutDelegate?
+    public var contentInset = UIEdgeInsets.zero
 
     // MARK: UICollectionViewLayout overrides
     public override func prepare() {
@@ -51,7 +52,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
         cacheForItems.removeAll(keepingCapacity: true)
 
         // prepare layout for cells
-        var x: CGFloat = 0
+        var x: CGFloat = contentInset.left
         for section in 0..<cv.numberOfSections {
             let headerHeight = delegate.collectionView(cv, hshlSizeForHeaderAtSection: section).height
             let headerInsets = delegate.collectionView(cv, hshlHeaderInsetsAtSection: section)
@@ -97,7 +98,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
         let lastSection = cv.numberOfSections - 1
         let sectionInsets: UIEdgeInsets = delegate.collectionView(cv, hshlSectionInsetsAtSection: lastSection)
         let contentWidth = maxX + sectionInsets.right
-        let contentHeight = cv.bounds.height - cv.contentInset.top - cv.contentInset.bottom
+        let contentHeight = cv.bounds.height - contentInset.top - contentInset.bottom
         return CGSize(width: contentWidth, height: contentHeight)
     }
 
@@ -143,7 +144,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                 if let firstItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(item: 0, section: section) }),
                     let lastItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(row: numberOfItems - 1, section: section) }) {
 
-                    let edgeX = cv.contentOffset.x + cv.contentInset.left + headerInsets.left
+                    let edgeX = cv.contentOffset.x + contentInset.left + headerInsets.left
                     let xByLeftBoundary = max(edgeX, firstItemAttributes.frame.minX - itemsInsets.left + headerInsets.left)
 
                     let xByRightBoundary = (lastItemAttributes.frame.maxX + itemsInsets.right) - headerSize.width - headerInsets.right

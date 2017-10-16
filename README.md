@@ -6,6 +6,8 @@ Horizontal UICollectionViewLayout with Sticky HeaderView
 
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20tvOS-blue.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods](https://img.shields.io/badge/Cocoapods-compatible-brightgreen.svg)](https://cocoapods.org)
+[![pod](https://img.shields.io/cocoapods/v/HorizontalStickyHeaderLayout.svg?style=flat)](https://cocoapods.org/pods/HorizontalStickyHeaderLayout)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
 )](http://mit-license.org)
 

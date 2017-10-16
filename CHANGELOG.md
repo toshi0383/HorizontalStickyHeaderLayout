@@ -1,4 +1,4 @@
-## master
+## 0.2.0
 ##### Bugfix
 * Layout was not treating `collectionView.contentInset` collectly.  
   Use custom field for contentInset, not collectionView.contentInset.  

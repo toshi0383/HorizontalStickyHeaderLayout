@@ -80,6 +80,11 @@ Modify `headerYDeltaOnFocus` if you need. (Set 0 if you don't need this behavior
 github "toshi0383/HorizontalStickyHeaderLayout"
 ```
 
+## CocoaPods
+```
+pod "HorizontalStickyHeaderLayout"
+```
+
 # Development
 - Xcode9
 - Swift4

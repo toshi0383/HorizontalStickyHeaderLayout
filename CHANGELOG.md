@@ -1,4 +1,4 @@
-## master
+## 0.3.0
 ##### Feature
 * Animate Header PositionY for tvOS Focus  
   [#2](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/2) @toshi0383

@@ -70,6 +70,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             layout.delegate = self
             #if os(tvOS)
                 layout.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+                layout.headerYDeltaOnFocus = -20
             #endif
         }
     }
@@ -152,7 +153,9 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
 // MARK: Focus
 extension ViewController {
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-
+        guard context.nextFocusedIndexPath != nil || context.previouslyFocusedIndexPath != nil else {
+            return
+        }
         self.collectionView.collectionViewLayout.invalidateLayout()
         coordinator.addCoordinatedAnimations({
             self.collectionView.layoutIfNeeded()

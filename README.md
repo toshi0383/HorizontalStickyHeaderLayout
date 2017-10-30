@@ -68,6 +68,11 @@ Currently `invalidateLayout()` call is required. Call it and then `layoutIfNeede
     }
 ```
 
+Modify `headerYDeltaOnFocus` as you need.
+```swift
+    (collectionView.collectionViewLayout as? HorizontalStickyHeaderLayout)!.headerYDeltaOnFocus = -25
+```
+
 # Install
 ## Carthage
 ```

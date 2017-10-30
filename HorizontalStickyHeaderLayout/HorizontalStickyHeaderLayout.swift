@@ -30,6 +30,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     private var cacheForItems = [Layout]()
     public weak var delegate: HorizontalStickyHeaderLayoutDelegate?
     public var contentInset = UIEdgeInsets.zero
+    public var headerYDeltaOnFocus: CGFloat = -20
 
     // MARK: UICollectionViewLayout overrides
     public override func prepare() {
@@ -166,7 +167,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                     return false
                 #endif
             }
-            let yDeltaForFocus: CGFloat = shouldPopHeader() ? -20 : 0
+            let yDeltaForFocus: CGFloat = shouldPopHeader() ? headerYDeltaOnFocus : 0
             let frame = CGRect(x: x,
                                y: headerInsets.top + yDeltaForFocus,
                                width: headerSize.width,

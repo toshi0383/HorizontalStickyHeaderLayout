@@ -70,6 +70,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             layout.delegate = self
             #if os(tvOS)
                 layout.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+                layout.headerYDeltaOnFocus = -20
             #endif
         }
     }

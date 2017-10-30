@@ -54,6 +54,20 @@ Optionally you can define `contentInset` for outer margin.
 
 See [Example](Example) for detail.
 
+# Animated header position for tvOS for free!
+![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/sticky-animated-header-for-tvos.gif?raw=true)
+
+Currently `invalidateLayout()` call is required. Call it and then `layoutIfNeeded()` inside coordinatedAnimation block to correctly trigger animate.
+
+```swift
+    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        self.collectionView.collectionViewLayout.invalidateLayout()
+        coordinator.addCoordinatedAnimations({
+            self.collectionView.layoutIfNeeded()
+        }, completion: nil)
+    }
+```
+
 # Install
 ## Carthage
 ```

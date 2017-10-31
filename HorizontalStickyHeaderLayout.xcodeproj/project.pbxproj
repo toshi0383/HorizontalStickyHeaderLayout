@@ -25,6 +25,8 @@
 		1FA4CA301F87D85B00566F8A /* HorizontalStickyHeaderLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FA4CA351F87D8D300566F8A /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA4CA341F87D8D300566F8A /* HeaderView.xib */; };
 		1FA7C5E81F875DD50094F770 /* HorizontalStickyHeaderLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA7C5E61F875DD50094F770 /* HorizontalStickyHeaderLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FE7F57B1FA82A180003B24B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7F57A1FA82A180003B24B /* HeaderView.swift */; };
+		1FE7F57C1FA82A180003B24B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7F57A1FA82A180003B24B /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,7 @@
 		1FA7C5E61F875DD50094F770 /* HorizontalStickyHeaderLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalStickyHeaderLayout.h; sourceTree = "<group>"; };
 		1FA7C5E71F875DD50094F770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FA7C60E1F87AAC00094F770 /* HorizontalStickyHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStickyHeaderLayout.swift; sourceTree = "<group>"; };
+		1FE7F57A1FA82A180003B24B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 				1FA4C9EF1F87D6B000566F8A /* AppDelegate.swift */,
 				1FA4C9EE1F87D6B000566F8A /* Cell.swift */,
 				1FA4C9ED1F87D6B000566F8A /* ViewController.swift */,
+				1FE7F57A1FA82A180003B24B /* HeaderView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -340,6 +344,7 @@
 				1FA4C9F51F87D6B600566F8A /* AppDelegate.swift in Sources */,
 				1FA4C9F41F87D6B600566F8A /* Cell.swift in Sources */,
 				1FA4C9F31F87D6B600566F8A /* ViewController.swift in Sources */,
+				1FE7F57B1FA82A180003B24B /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +355,7 @@
 				1FA4CA241F87D82500566F8A /* AppDelegate.swift in Sources */,
 				1FA4CA231F87D82500566F8A /* Cell.swift in Sources */,
 				1FA4CA221F87D82500566F8A /* ViewController.swift in Sources */,
+				1FE7F57C1FA82A180003B24B /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

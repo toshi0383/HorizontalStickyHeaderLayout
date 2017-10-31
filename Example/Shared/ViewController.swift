@@ -22,9 +22,22 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             if #available(iOS 11.0, *) {
                 collectionView.contentInsetAdjustmentBehavior = .never
             }
+            let nib = UINib(nibName: HeaderView.reuseID, bundle: .main)
+            collectionView.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderView.reuseID)
+            collectionView.dataSource = self
+            collectionView.delegate = self // automatically detected if it conforms to HorizontalStickyHeaderLayoutDelegate
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
     }
-    private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<3).map { $0 }) }
+    @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
+        didSet {
+            layout.delegate = self
+            #if os(tvOS)
+                layout.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+                layout.headerYDeltaOnFocus = -20
+            #endif
+        }
+    }
     @IBAction private func add() {
         let ips = (0..<5).map { IndexPath(item: sections[$0].items.count, section: $0) }
         for s in sections {
@@ -79,23 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             }, completion: nil)
         }
     }
-    @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
-        didSet {
-            layout.delegate = self
-            #if os(tvOS)
-                layout.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-                layout.headerYDeltaOnFocus = -20
-            #endif
-        }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView.dataSource = self
-        collectionView.delegate = self // automatically detected if it conforms to HorizontalStickyHeaderLayoutDelegate
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        let nib = UINib(nibName: "HeaderView", bundle: .main)
-        collectionView.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView")
-    }
+    private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<3).map { $0 }) }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -114,7 +111,10 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath)
+        let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseID, for: indexPath)
+        if let v = v as? HeaderView {
+            v.label?.text = "\(indexPath.section)"
+        }
         v.backgroundColor = indexPath.section % 2 == 0 ? .orange : .green
         return v
     }

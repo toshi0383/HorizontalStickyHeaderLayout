@@ -1,4 +1,4 @@
-## master
+## 0.3.1
 ##### Bugfix
 * Fix unwanted scrolling header  
   [#3](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/3) @toshi0383

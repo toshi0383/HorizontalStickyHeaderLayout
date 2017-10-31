@@ -1,3 +1,8 @@
+## master
+##### Bugfix
+* Fix unwanted scrolling header  
+  [#3](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/3) @toshi0383
+
 ## 0.3.0
 ##### Feature
 * Animate Header PositionY for tvOS Focus  

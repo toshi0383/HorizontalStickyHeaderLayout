@@ -69,7 +69,7 @@ Currently `invalidateLayout()` call is required. Call it and then `layoutIfNeede
     }
 ```
 
-Modify `headerYDeltaOnFocus` if you need. It defaults to 20. (Set 0 if you don't need this behavior.)
+Modify `headerYDeltaOnFocus` if you need. It defaults to `-20`. (Set `0` to disable this behavior.)
 ```swift
 (collectionView.collectionViewLayout as? HorizontalStickyHeaderLayout)!.headerYDeltaOnFocus = -25
 ```

@@ -1,11 +1,16 @@
+## master
+##### Bugfix
+* [tvOS] Fix unwanted popping header  
+  [#6](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/6) @toshi0383
+
 ## 0.3.1
 ##### Bugfix
-* Fix unwanted scrolling header  
+* [tvOS] Fix unwanted scrolling header  
   [#3](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/3) @toshi0383
 
 ## 0.3.0
 ##### Feature
-* Animate Header PositionY for tvOS Focus  
+* [tvOS] Animate Header PositionY for tvOS Focus  
   [#2](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/2) @toshi0383
 
 ## 0.2.0

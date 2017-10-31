@@ -155,6 +155,12 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             func shouldPopHeader() -> Bool {
                 #if os(tvOS)
                     if let focusedItemFrame = cv.subviews.flatMap({ $0 as? UICollectionViewCell }).first(where: { $0.isFocused })?.frame {
+                        let likelyToScrollToLeft = (cv.contentOffset.x > focusedItemFrame.minX)
+                        if likelyToScrollToLeft {
+                            // Keep header popped regardless header size on left scrolling.
+                            // Left scroll means the focus is at left most cell, then header needs to be popped, right?
+                            return true
+                        }
                         let shouldPop = !(focusedItemFrame.maxX < x ||
                             x + headerSize.width
                             + headerInsets.right // in case item next to is focused and enlarged

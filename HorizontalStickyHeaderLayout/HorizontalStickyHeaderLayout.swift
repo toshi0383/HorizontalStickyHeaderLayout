@@ -145,7 +145,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                 if let firstItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(item: 0, section: section) }),
                     let lastItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(row: numberOfItems - 1, section: section) }) {
 
-                    let edgeX = cv.contentOffset.x + contentInset.left + headerInsets.left
+                    let edgeX = cv.contentOffset.x + cv.contentInset.left + contentInset.left + headerInsets.left
                     let xByLeftBoundary = max(edgeX, firstItemAttributes.frame.minX - itemsInsets.left + headerInsets.left)
 
                     let xByRightBoundary = (lastItemAttributes.frame.maxX + itemsInsets.right) - headerSize.width - headerInsets.right

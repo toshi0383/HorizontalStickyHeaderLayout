@@ -154,7 +154,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             }
             func shouldPopHeader() -> Bool {
                 #if os(tvOS)
-                    if let focusedItemFrame = cv.subviews.flatMap({ $0 as? UICollectionViewCell }).first(where: { $0.isFocused })?.frame {
+                    if let focusedItemFrame = (0..<cv.numberOfItems(inSection: section)).map({ IndexPath(item: $0, section: section) }).flatMap(cv.cellForItem(at:)).first(where: { $0.isFocused })?.frame {
                         let likelyToScrollToLeft = (cv.contentOffset.x > focusedItemFrame.minX)
                         if likelyToScrollToLeft {
                             // Keep header popped regardless header size on left scrolling.

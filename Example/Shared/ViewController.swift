@@ -24,7 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             }
         }
     }
-    private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<1).map { $0 }) }
+    private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<3).map { $0 }) }
     @IBAction private func add() {
         let ips = (0..<5).map { IndexPath(item: sections[$0].items.count, section: $0) }
         for s in sections {
@@ -64,6 +64,20 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             self.collectionView.deleteItems(at: deletes)
             self.collectionView.insertItems(at: add1 + add2)
         }, completion: nil)
+    }
+    @IBAction private func reloadWithBatchUpdate() {
+        let all: [IndexPath] = (0..<sections.count).flatMap { s in (0..<sections[s].items.count).map { i in IndexPath(item: i, section: s) } }
+        let oldSections = sections
+        sections = (0..<sections.count).map { _ in Section(items: []) }
+        collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: all)
+        }, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+            self.sections = oldSections
+            self.collectionView.performBatchUpdates({
+                self.collectionView.insertItems(at: all)
+            }, completion: nil)
+        }
     }
     @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
         didSet {
@@ -112,7 +126,7 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     private enum Const {
         static let headerSize = CGSize(width: 351, height: 38)
         static let itemSize0  = CGSize(width: 447, height: 454)
-        static let itemSize1  = CGSize(width: 447, height: 322)
+        static let itemSize1  = CGSize(width: 700, height: 700)
         static let spacingForItems: CGFloat = 60
     }
     #elseif os(iOS)

@@ -101,6 +101,15 @@
                                     <action selector="deleteSection" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="wX0-oz-uXL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezO-TU-aDD">
+                                <rect key="frame" x="508" y="170" width="492" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="realodWithBatchUpdate"/>
+                                <connections>
+                                    <action selector="reloadWithBatchUpdate" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Nv0-rc-GXg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

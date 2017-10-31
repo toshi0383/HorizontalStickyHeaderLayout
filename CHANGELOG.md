@@ -1,4 +1,4 @@
-## master
+## 0.3.3
 ##### Bugfix
 * [tvOS] Fix unwanted popping header 2  
   [#7](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/7) @toshi0383

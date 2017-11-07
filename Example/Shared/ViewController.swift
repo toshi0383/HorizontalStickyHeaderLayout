@@ -9,6 +9,22 @@
 import UIKit
 import HorizontalStickyHeaderLayout
 
+private enum Const {
+    static let numberOfItemsForEachSection = 100
+    static let numberOfSections = 5
+    #if os(tvOS)
+    static let headerSize = CGSize(width: 351, height: 38)
+    static let itemSize0  = CGSize(width: 447, height: 454)
+    static let itemSize1  = CGSize(width: 700, height: 700)
+    static let spacingForItems: CGFloat = 60
+    #elseif os(iOS)
+    static let headerSize = CGSize(width: 100, height: 38)
+    static let itemSize0  = CGSize(width: 50, height: 50)
+    static let itemSize1  = CGSize(width: 80, height: 80)
+    static let spacingForItems: CGFloat = 30
+    #endif
+}
+
 class Section {
     var items: [Int]
     init(items: [Int]) {
@@ -17,6 +33,8 @@ class Section {
 }
 
 class ViewController: UIViewController, UICollectionViewDelegate {
+    fileprivate var isFastScrolling: Bool = false
+
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             if #available(iOS 11.0, *) {
@@ -92,7 +110,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             }, completion: nil)
         }
     }
-    private var sections: [Section] = (0..<5).map { _ in Section(items: (0..<3).map { $0 }) }
+    private var sections: [Section] = (0..<Const.numberOfSections).map { _ in Section(items: (0..<Const.numberOfItemsForEachSection).map { $0 }) }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -122,21 +140,6 @@ extension ViewController: UICollectionViewDataSource {
 
 // MARK: HorizontalStickyHeaderLayoutDelegate
 extension ViewController: HorizontalStickyHeaderLayoutDelegate {
-    #if os(tvOS)
-    private enum Const {
-        static let headerSize = CGSize(width: 351, height: 38)
-        static let itemSize0  = CGSize(width: 447, height: 454)
-        static let itemSize1  = CGSize(width: 700, height: 700)
-        static let spacingForItems: CGFloat = 60
-    }
-    #elseif os(iOS)
-    private enum Const {
-        static let headerSize = CGSize(width: 100, height: 38)
-        static let itemSize0  = CGSize(width: 50, height: 50)
-        static let itemSize1  = CGSize(width: 80, height: 80)
-        static let spacingForItems: CGFloat = 30
-    }
-    #endif
 
     // Size
     func collectionView(_ collectionView: UICollectionView, hshlSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
@@ -172,7 +175,22 @@ extension ViewController {
         }
         self.collectionView.collectionViewLayout.invalidateLayout()
         coordinator.addCoordinatedAnimations({
-            self.collectionView.layoutIfNeeded()
+            if !self.isFastScrolling {
+                self.collectionView.layoutIfNeeded()
+            }
         }, completion: nil)
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !collectionView.visibleCells.contains(where: { $0.isFocused }) {
+            isFastScrolling = true
+        } else {
+            isFastScrolling = false
+        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            isFastScrolling = false
+        }
     }
 }

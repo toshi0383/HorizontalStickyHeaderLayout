@@ -57,14 +57,16 @@ See [Example](Example) for detail.
 # Animated header Y position for tvOS for free!
 ![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/sticky-animated-header-for-tvos.gif?raw=true)
 
-Currently `invalidateLayout()` call is required. Call it and then `layoutIfNeeded()` inside coordinatedAnimation block to correctly trigger animation.
+Currently `invalidateLayout()` call is required. Call it and then `layoutIfNeeded()` inside coordinatedAnimation block to correctly trigger animation **iff it's not during fast scroll**. See [#5](https://github.com/toshi0383/HorizontalStickyHeaderLayout/issues/5#issuecomment-342332880) for more information.
 
 ```swift
     // Either in UICollectionViewDelegate or in UIFocusEnvironment's didUpdateFocus method.
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         self.collectionView.collectionViewLayout.invalidateLayout()
         coordinator.addCoordinatedAnimations({
-            self.collectionView.layoutIfNeeded()
+            if !self.isFastScrolling {
+                self.collectionView.layoutIfNeeded()
+            }
         }, completion: nil)
     }
 ```

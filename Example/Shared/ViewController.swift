@@ -10,7 +10,7 @@ import UIKit
 import HorizontalStickyHeaderLayout
 
 private enum Const {
-    static let numberOfItemsForEachSection = 100
+    static let numberOfItemsForEachSection = 10
     static let numberOfSections = 5
     #if os(tvOS)
     static let headerSize = CGSize(width: 351, height: 38)

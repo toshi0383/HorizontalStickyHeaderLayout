@@ -33,7 +33,6 @@ class Section {
 }
 
 class ViewController: UIViewController, UICollectionViewDelegate {
-    fileprivate var isFastScrolling: Bool = false
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -175,22 +174,9 @@ extension ViewController {
         }
         self.collectionView.collectionViewLayout.invalidateLayout()
         coordinator.addCoordinatedAnimations({
-            if !self.isFastScrolling {
-                self.collectionView.layoutIfNeeded()
+            if collectionView.visibleCells.contains(where: { $0.isFocused }) {
+                collectionView.layoutIfNeeded()
             }
         }, completion: nil)
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if !collectionView.visibleCells.contains(where: { $0.isFocused }) {
-            isFastScrolling = true
-        } else {
-            isFastScrolling = false
-        }
-    }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            isFastScrolling = false
-        }
     }
 }

@@ -1,4 +1,4 @@
-## master
+## 0.4.0
 ##### Breaking
 * [tvOS] Pop header using container view, not HeaderView itself [#10](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/10) [@toshi0383](https://github.com/toshi0383)
 

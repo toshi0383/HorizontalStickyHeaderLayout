@@ -57,23 +57,33 @@ See [Example](Example) for detail.
 # Animated header Y position for tvOS for free!
 ![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/sticky-animated-header-for-tvos.gif?raw=true)
 
-- Call `invalidateLayout()`
-- Tell layout to recalculate the popping headers indexPaths
-- Get indexPaths to pop, and animate by yourself.
+## How to implement
+- On focus, call `updatePoppingHeaderIndexPaths()` to recalculate the popping header indexPaths to get the latest indexPaths.
+- Listen to pop indexPaths change on scroll by implementing `collectionView(_:,hshlDidUpdatePoppingHeaderIndexPaths:)` delegate method.
+- animate container view of your header view.
 
 See [Example](Example) for recommended implementation.
 
 ```swift
     // Either in UICollectionViewDelegate or this override method.
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        self.collectionView.collectionViewLayout.invalidateLayout()
         layout.updatePoppingHeaderIndexPaths()
         let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
-        unpop.forEach { $0.unpopHeader() }
+        UIView.animate(withDuration: Const.unpopDuration, delay: 0, options: [.curveEaseOut], animations: {
+            unpop.forEach { $0.unpopHeader() }
+        }, completion: nil)
         coordinator.addCoordinatedAnimations({
             pop.forEach { $0.popHeader() }
         }, completion: nil)
         super.didUpdateFocus(in: context, with: coordinator)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, hshlDidUpdatePoppingHeaderIndexPaths indexPaths: [IndexPath]) {
+        let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
+        UIView.animate(withDuration: Const.unpopDuration, delay: 0, options: [.curveEaseOut], animations: {
+            unpop.forEach { $0.unpopHeader() }
+            pop.forEach { $0.popHeader() }
+        }, completion: nil)
     }
 ```
 
@@ -89,8 +99,8 @@ pod "HorizontalStickyHeaderLayout"
 ```
 
 # Development
-- Xcode9
-- Swift4
+- Xcode9.1
+- Swift4.0.2
 
 # License
 MIT

@@ -5,6 +5,7 @@
 ##### Bugfix
 * [tvOS] Unwanted moving header on fast scroll [#5](https://github.com/toshi0383/HorizontalStickyHeaderLayout/issues/5)
 * [tvOS] Cell's sometimes not displayed when popping header is enabled [#9](https://github.com/toshi0383/HorizontalStickyHeaderLayout/issues/9)
+* [tvOS] Notify on poppingHeaderIndexPaths change on scroll [#11](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/11) [@toshi0383](https://github.com/toshi0383)
 
 ## 0.3.3
 ##### Bugfix

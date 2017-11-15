@@ -30,7 +30,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     private var cacheForItems = [Layout]()
     public weak var delegate: HorizontalStickyHeaderLayoutDelegate?
     public var contentInset = UIEdgeInsets.zero
-    public var poppingHeaderIndexPaths: [IndexPath] = []
+    public private(set) var poppingHeaderIndexPaths: [IndexPath] = []
     public func updatePoppingHeaderIndexPaths() {
         _ = getAttributesForHeaders()
     }

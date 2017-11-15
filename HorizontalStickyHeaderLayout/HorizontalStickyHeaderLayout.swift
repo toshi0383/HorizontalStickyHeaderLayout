@@ -18,12 +18,14 @@ private struct Layout {
     }
 }
 
+@objc
 public protocol HorizontalStickyHeaderLayoutDelegate: class {
     func collectionView(_ collectionView: UICollectionView, hshlSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets
     func collectionView(_ collectionView: UICollectionView, hshlMinSpacingForCellsAtSection section: Int) -> CGFloat
     func collectionView(_ collectionView: UICollectionView, hshlSizeForHeaderAtSection section: Int) -> CGSize
     func collectionView(_ collectionView: UICollectionView, hshlHeaderInsetsAtSection section: Int) -> UIEdgeInsets
+    @objc optional func collectionView(_ collectionView: UICollectionView, hshlDidUpdatePoppingHeaderIndexPaths indexPaths: [IndexPath])
 }
 
 public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
@@ -31,8 +33,11 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     public weak var delegate: HorizontalStickyHeaderLayoutDelegate?
     public var contentInset = UIEdgeInsets.zero
     public private(set) var poppingHeaderIndexPaths: [IndexPath] = []
+    private var skipDidUpdatePoppingHeaderDelegateCall: Bool = false
     public func updatePoppingHeaderIndexPaths() {
+        skipDidUpdatePoppingHeaderDelegateCall = true
         _ = getAttributesForHeaders()
+        skipDidUpdatePoppingHeaderDelegateCall = false
     }
 
     // MARK: UICollectionViewLayout overrides
@@ -195,6 +200,9 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             x += headerInsets.right
         }
         self.poppingHeaderIndexPaths = poppingHeaderSections.map { IndexPath(item: 0, section: $0) }
+        if !skipDidUpdatePoppingHeaderDelegateCall {
+            delegate.collectionView?(cv, hshlDidUpdatePoppingHeaderIndexPaths: self.poppingHeaderIndexPaths)
+        }
         return attributes
     }
 }

@@ -13,6 +13,7 @@ private enum Const {
     static let numberOfItemsForEachSection = 10
     static let numberOfSections = 5
     #if os(tvOS)
+    static let unpopDuration: Double = 0.4
     static let headerSize = CGSize(width: 351, height: 38)
     static let itemSize0  = CGSize(width: 447, height: 454)
     static let itemSize1  = CGSize(width: 700, height: 700)
@@ -168,6 +169,14 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
     }
+    // Popping Header
+    func collectionView(_ collectionView: UICollectionView, hshlDidUpdatePoppingHeaderIndexPaths indexPaths: [IndexPath]) {
+        let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
+        UIView.animate(withDuration: Const.unpopDuration, delay: 0, options: [.curveEaseOut], animations: {
+            unpop.forEach { $0.unpopHeader() }
+            pop.forEach { $0.popHeader() }
+        }, completion: nil)
+    }
     func getHeaders(poppingHeadersIndexPaths indexPaths: [IndexPath]) -> (pop: [HeaderView], unpop: [HeaderView]) {
         var visible = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader)
         var pop: [HeaderView] = []
@@ -182,11 +191,6 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
                 pop.append(header)
             }
         }
-        for view in visible {
-            if let header = view as? HeaderView {
-                header.unpopHeader()
-            }
-        }
         return (pop: pop, unpop: visible.flatMap { $0 as? HeaderView })
     }
 }
@@ -194,10 +198,11 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
 // MARK: Focus
 extension ViewController {
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        self.collectionView.collectionViewLayout.invalidateLayout()
         layout.updatePoppingHeaderIndexPaths()
         let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
-        unpop.forEach { $0.unpopHeader() }
+        UIView.animate(withDuration: Const.unpopDuration, delay: 0, options: [.curveEaseOut], animations: {
+            unpop.forEach { $0.unpopHeader() }
+        }, completion: nil)
         coordinator.addCoordinatedAnimations({
             pop.forEach { $0.popHeader() }
         }, completion: nil)

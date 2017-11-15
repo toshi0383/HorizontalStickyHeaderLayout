@@ -30,7 +30,10 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     private var cacheForItems = [Layout]()
     public weak var delegate: HorizontalStickyHeaderLayoutDelegate?
     public var contentInset = UIEdgeInsets.zero
-    public var headerYDeltaOnFocus: CGFloat = -20
+    public var poppingHeaderIndexPaths: [IndexPath] = []
+    public func updatePoppingHeaderIndexPaths() {
+        _ = getAttributesForHeaders()
+    }
 
     // MARK: UICollectionViewLayout overrides
     public override func prepare() {
@@ -135,6 +138,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             fatalError()
         }
         var attributes = [UICollectionViewLayoutAttributes]()
+        var poppingHeaderSections: [Int] = []
         for section in 0..<cv.numberOfSections {
             var x: CGFloat = 0
             let headerSize = delegate.collectionView(cv, hshlSizeForHeaderAtSection: section)
@@ -173,9 +177,15 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                     return false
                 #endif
             }
-            let yDeltaForFocus: CGFloat = shouldPopHeader() ? headerYDeltaOnFocus : 0
+            if shouldPopHeader() {
+                poppingHeaderSections.append(section)
+            } else {
+                if let s = poppingHeaderSections.index(of: section) {
+                    poppingHeaderSections.remove(at: s)
+                }
+            }
             let frame = CGRect(x: x,
-                               y: headerInsets.top + yDeltaForFocus,
+                               y: headerInsets.top,
                                width: headerSize.width,
                                height: headerSize.height)
             let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
@@ -184,6 +194,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             attributes.append(attr)
             x += headerInsets.right
         }
+        self.poppingHeaderIndexPaths = poppingHeaderSections.map { IndexPath(item: 0, section: $0) }
         return attributes
     }
 }

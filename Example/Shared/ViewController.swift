@@ -51,7 +51,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             layout.delegate = self
             #if os(tvOS)
                 layout.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-                layout.headerYDeltaOnFocus = -20
             #endif
         }
     }
@@ -131,8 +130,13 @@ extension ViewController: UICollectionViewDataSource {
         let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseID, for: indexPath)
         if let v = v as? HeaderView {
             v.label?.text = "\(indexPath.section)"
+            let backgroundColor: UIColor = indexPath.section % 2 == 0 ? .orange : .green
+            #if os(tvOS)
+                v.container?.backgroundColor = backgroundColor
+            #else
+                v.backgroundColor = backgroundColor
+            #endif
         }
-        v.backgroundColor = indexPath.section % 2 == 0 ? .orange : .green
         return v
     }
 }
@@ -164,19 +168,39 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
     }
+    func getHeaders(poppingHeadersIndexPaths indexPaths: [IndexPath]) -> (pop: [HeaderView], unpop: [HeaderView]) {
+        var visible = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader)
+        var pop: [HeaderView] = []
+        for indexPath in indexPaths {
+            guard let view = collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: indexPath) else {
+                continue
+            }
+            if let index = visible.index(of: view) {
+                visible.remove(at: index)
+            }
+            if let header = view as? HeaderView {
+                pop.append(header)
+            }
+        }
+        for view in visible {
+            if let header = view as? HeaderView {
+                header.unpopHeader()
+            }
+        }
+        return (pop: pop, unpop: visible.flatMap { $0 as? HeaderView })
+    }
 }
 
 // MARK: Focus
 extension ViewController {
-    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        guard context.nextFocusedIndexPath != nil || context.previouslyFocusedIndexPath != nil else {
-            return
-        }
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         self.collectionView.collectionViewLayout.invalidateLayout()
+        layout.updatePoppingHeaderIndexPaths()
+        let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
+        unpop.forEach { $0.unpopHeader() }
         coordinator.addCoordinatedAnimations({
-            if collectionView.visibleCells.contains(where: { $0.isFocused }) {
-                collectionView.layoutIfNeeded()
-            }
+            pop.forEach { $0.popHeader() }
         }, completion: nil)
+        super.didUpdateFocus(in: context, with: coordinator)
     }
 }

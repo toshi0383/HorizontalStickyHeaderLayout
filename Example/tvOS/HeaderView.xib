@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="13196" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="13529" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,20 +14,33 @@
             <rect key="frame" x="0.0" y="0.0" width="1920" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3e-B4-Xz4">
-                    <rect key="frame" x="0.0" y="0.0" width="91" height="50"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2K-Mx-Abg">
+                    <rect key="frame" x="0.0" y="0.0" width="1920" height="38"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3e-B4-Xz4">
+                            <rect key="frame" x="0.0" y="0.0" width="91" height="38"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="L3e-B4-Xz4" secondAttribute="bottom" id="H6p-Hh-CYQ"/>
+                        <constraint firstItem="L3e-B4-Xz4" firstAttribute="leading" secondItem="y2K-Mx-Abg" secondAttribute="leading" id="Xqx-1m-872"/>
+                        <constraint firstItem="L3e-B4-Xz4" firstAttribute="top" secondItem="y2K-Mx-Abg" secondAttribute="top" id="cI7-YE-nbW"/>
+                        <constraint firstAttribute="height" constant="38" id="g4L-UF-fv9"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="L3e-B4-Xz4" firstAttribute="leading" secondItem="IuV-QN-8XL" secondAttribute="leading" id="Y7j-5M-EJz"/>
-                <constraint firstAttribute="bottom" secondItem="L3e-B4-Xz4" secondAttribute="bottom" id="cXV-NY-5Qf"/>
-                <constraint firstItem="L3e-B4-Xz4" firstAttribute="top" secondItem="IuV-QN-8XL" secondAttribute="top" id="tyR-np-ctZ"/>
+                <constraint firstAttribute="trailing" secondItem="y2K-Mx-Abg" secondAttribute="trailing" id="3kK-00-04V"/>
+                <constraint firstItem="y2K-Mx-Abg" firstAttribute="top" secondItem="IuV-QN-8XL" secondAttribute="top" id="bJs-SK-OvQ"/>
+                <constraint firstItem="y2K-Mx-Abg" firstAttribute="leading" secondItem="IuV-QN-8XL" secondAttribute="leading" id="p8W-Pd-N5B"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="7Hi-e8-9NQ"/>
             <connections>
+                <outlet property="container" destination="y2K-Mx-Abg" id="3ff-Wn-dQG"/>
+                <outlet property="containerTop" destination="bJs-SK-OvQ" id="vCd-hl-hX5"/>
                 <outlet property="label" destination="L3e-B4-Xz4" id="KL4-oT-FEe"/>
             </connections>
             <point key="canvasLocation" x="199" y="390"/>

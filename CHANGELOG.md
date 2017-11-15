@@ -1,22 +1,26 @@
+## master
+##### Breaking
+* [tvOS] Pop header using container view, not HeaderView itself [#10](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/10) [@toshi0383](https://github.com/toshi0383)
+
+##### Bugfix
+* [tvOS] Unwanted moving header on fast scroll [#5](https://github.com/toshi0383/HorizontalStickyHeaderLayout/issues/5)
+* [tvOS] Cell's sometimes not displayed when popping header is enabled [#9](https://github.com/toshi0383/HorizontalStickyHeaderLayout/issues/9)
+
 ## 0.3.3
 ##### Bugfix
-* [tvOS] Fix unwanted popping header 2  
-  [#7](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/7) @toshi0383
+* [tvOS] Fix unwanted popping header 2 [#7](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/7) [@toshi0383](https://github.com/toshi0383)
 
 ## 0.3.2
 ##### Bugfix
-* [tvOS] Fix unwanted popping header  
-  [#6](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/6) @toshi0383
+* [tvOS] Fix unwanted popping header [#6](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/6) [@toshi0383](https://github.com/toshi0383)
 
 ## 0.3.1
 ##### Bugfix
-* [tvOS] Fix unwanted scrolling header  
-  [#3](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/3) @toshi0383
+* [tvOS] Fix unwanted scrolling header [#3](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/3) [@toshi0383](https://github.com/toshi0383)
 
 ## 0.3.0
 ##### Feature
-* [tvOS] Animate Header PositionY for tvOS Focus  
-  [#2](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/2) @toshi0383
+* [tvOS] Animate Header PositionY for tvOS Focus [#2](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/2) [@toshi0383](https://github.com/toshi0383)
 
 ## 0.2.0
 ##### Bugfix

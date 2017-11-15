@@ -168,6 +168,15 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
     }
+    // Popping Header
+    func collectionView(_ collectionView: UICollectionView, hshlDidUpdatePoppingHeaderIndexPaths indexPaths: [IndexPath]) {
+        let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
+        print("[didupate]: \(self.layout.poppingHeaderIndexPaths.map { $0.section })")
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+            unpop.forEach { $0.unpopHeader() }
+            pop.forEach { $0.popHeader() }
+        }, completion: nil)
+    }
     func getHeaders(poppingHeadersIndexPaths indexPaths: [IndexPath]) -> (pop: [HeaderView], unpop: [HeaderView]) {
         var visible = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader)
         var pop: [HeaderView] = []
@@ -197,7 +206,10 @@ extension ViewController {
         self.collectionView.collectionViewLayout.invalidateLayout()
         layout.updatePoppingHeaderIndexPaths()
         let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
-        unpop.forEach { $0.unpopHeader() }
+        print("[focusudpate]: \(self.layout.poppingHeaderIndexPaths.map { $0.section })")
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+            unpop.forEach { $0.unpopHeader() }
+        }, completion: nil)
         coordinator.addCoordinatedAnimations({
             pop.forEach { $0.popHeader() }
         }, completion: nil)

@@ -18,20 +18,13 @@ final class HeaderView: UICollectionReusableView {
     }
     func unpopHeader() {
         // EaseOut + 0.5 duration for unpopping animation
-        updateContainerTop(0, duration: 0.5)
+        updateContainerTop(0)
     }
-    private func updateContainerTop(_ constant: CGFloat, duration: Double? = nil) {
+    private func updateContainerTop(_ constant: CGFloat) {
         guard let containerTop = containerTop, containerTop.constant != constant else {
             return
         }
         containerTop.constant = constant
-
-        if let duration = duration {
-            UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut], animations: {
-                self.layoutIfNeeded()
-            }, completion: nil)
-        } else {
-            self.layoutIfNeeded()
-        }
+        self.layoutIfNeeded()
     }
 }

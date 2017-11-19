@@ -2,7 +2,7 @@
 
 Horizontal UICollectionViewLayout with Sticky HeaderView
 
-![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/hshl-iphone7.gif?raw=true)
+![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/hshl-iphone7.gif)
 
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20tvOS-blue.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -55,7 +55,7 @@ Optionally you can define `contentInset` for outer margin.
 See [Example](Example) for detail.
 
 # Animated header Y position for tvOS for free!
-![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/sticky-animated-header-for-tvos.gif?raw=true)
+![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/sticky-animated-header-for-tvos.gif)
 
 ## How to implement
 - On focus, call `updatePoppingHeaderIndexPaths()` to recalculate the popping header indexPaths to get the latest indexPaths.

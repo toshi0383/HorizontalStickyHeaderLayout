@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HorizontalStickyHeaderLayout'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.summary          = 'Horizontal UICollectionViewLayout with Sticky HeaderView'
   s.description      = <<-DESC
         'Horizontal UICollectionViewLayout with Sticky HeaderView'

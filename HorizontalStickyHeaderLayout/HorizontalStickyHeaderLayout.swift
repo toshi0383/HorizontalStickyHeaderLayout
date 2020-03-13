@@ -94,7 +94,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
         return cacheForItems.first { $0.indexPath == indexPath }?.attributes
     }
     public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        guard elementKind == UICollectionElementKindSectionHeader else {
+        guard elementKind == UICollectionView.elementKindSectionHeader else {
             return nil
         }
         return getAttributesForHeaders().first { $0.indexPath == indexPath }
@@ -114,11 +114,11 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     /////////////////////////////////////////////////
     // Note: Needed for sticky headers while scroling
 
-    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
-    open override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+    public override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         guard let cv = collectionView else {
             fatalError()
         }
@@ -129,7 +129,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
         let context = super.invalidationContext(forBoundsChange: newBounds)
 
         if !sizeChanged {
-            context.invalidateSupplementaryElements(ofKind: UICollectionElementKindSectionHeader, at: getAttributesForHeaders().map { $0.indexPath })
+            context.invalidateSupplementaryElements(ofKind: UICollectionView.elementKindSectionHeader, at: getAttributesForHeaders().map { $0.indexPath })
         }
         return context
     }
@@ -185,7 +185,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             if shouldPopHeader() {
                 poppingHeaderSections.append(section)
             } else {
-                if let s = poppingHeaderSections.index(of: section) {
+                if let s = poppingHeaderSections.firstIndex(of: section) {
                     poppingHeaderSections.remove(at: s)
                 }
             }
@@ -193,7 +193,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                                y: headerInsets.top,
                                width: headerSize.width,
                                height: headerSize.height)
-            let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+            let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                                         with: IndexPath(item: 0, section: section))
             attr.frame = frame
             attributes.append(attr)

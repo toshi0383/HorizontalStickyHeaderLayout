@@ -1,3 +1,11 @@
+## 0.5.0
+
+##### Breaking
+
+* Update `SWIFT_VERSION` to `5.0`
+  - https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/13 by [@airspeed](https://github.com/airspeed)
+  - https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/14
+
 ## 0.4.0
 ##### Breaking
 * [tvOS] Pop header using container view, not HeaderView itself [#10](https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/10) [@toshi0383](https://github.com/toshi0383)

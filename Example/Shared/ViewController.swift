@@ -41,7 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
                 collectionView.contentInsetAdjustmentBehavior = .never
             }
             let nib = UINib(nibName: HeaderView.reuseID, bundle: .main)
-            collectionView.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderView.reuseID)
+            collectionView.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseID)
             collectionView.dataSource = self
             collectionView.delegate = self // automatically detected if it conforms to HorizontalStickyHeaderLayoutDelegate
             collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
@@ -169,6 +169,29 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
     }
+
+    func getHeaders(poppingHeadersIndexPaths indexPaths: [IndexPath]) -> (pop: [HeaderView], unpop: [HeaderView]) {
+        var visible = collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader)
+        var pop: [HeaderView] = []
+        for indexPath in indexPaths {
+            guard let view = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) else {
+                continue
+            }
+            if let index = visible.firstIndex(of: view) {
+                visible.remove(at: index)
+            }
+            if let header = view as? HeaderView {
+                pop.append(header)
+            }
+        }
+        return (pop: pop, unpop: visible.compactMap { $0 as? HeaderView })
+    }
+}
+
+#if os(tvOS)
+
+extension ViewController {
+
     // Popping Header
     func collectionView(_ collectionView: UICollectionView, hshlDidUpdatePoppingHeaderIndexPaths indexPaths: [IndexPath]) {
         let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
@@ -177,26 +200,9 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
             pop.forEach { $0.popHeader() }
         }, completion: nil)
     }
-    func getHeaders(poppingHeadersIndexPaths indexPaths: [IndexPath]) -> (pop: [HeaderView], unpop: [HeaderView]) {
-        var visible = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader)
-        var pop: [HeaderView] = []
-        for indexPath in indexPaths {
-            guard let view = collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: indexPath) else {
-                continue
-            }
-            if let index = visible.index(of: view) {
-                visible.remove(at: index)
-            }
-            if let header = view as? HeaderView {
-                pop.append(header)
-            }
-        }
-        return (pop: pop, unpop: visible.flatMap { $0 as? HeaderView })
-    }
-}
 
-// MARK: Focus
-extension ViewController {
+    // MARK: Focus
+
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         layout.updatePoppingHeaderIndexPaths()
         let (pop, unpop) = self.getHeaders(poppingHeadersIndexPaths: self.layout.poppingHeaderIndexPaths)
@@ -209,3 +215,4 @@ extension ViewController {
         super.didUpdateFocus(in: context, with: coordinator)
     }
 }
+#endif

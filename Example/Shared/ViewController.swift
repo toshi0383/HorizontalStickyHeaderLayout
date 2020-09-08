@@ -47,6 +47,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
     }
+
     @IBOutlet weak var layout: HorizontalStickyHeaderLayout! {
         didSet {
             layout.delegate = self
@@ -55,6 +56,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             #endif
         }
     }
+
     @IBAction private func add() {
         let ips = (0..<5).map { IndexPath(item: sections[$0].items.count, section: $0) }
         for s in sections {
@@ -62,6 +64,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
         collectionView.insertItems(at: ips)
     }
+
     @IBAction private func delete() {
         let ips = (0..<5).map { IndexPath(item: sections[$0].items.count - 1, section: $0) }
         for s in sections {
@@ -69,14 +72,17 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
         collectionView.deleteItems(at: ips)
     }
+
     @IBAction private func addSection() {
         sections.insert(Section(items: [0]), at: 0)
         collectionView.insertSections(IndexSet(integer: 0))
     }
+
     @IBAction private func deleteSection() {
         sections.remove(at: 0)
         collectionView.deleteSections(IndexSet(integer: 0))
     }
+
     @IBAction private func batchUpdate() {
         let deletes = (0..<sections.count).map { IndexPath(item: 2, section: $0) }
         for s in sections {
@@ -95,6 +101,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             self.collectionView.insertItems(at: add1 + add2)
         }, completion: nil)
     }
+
     @IBAction private func reloadWithBatchUpdate() {
         let all: [IndexPath] = (0..<sections.count).flatMap { s in (0..<sections[s].items.count).map { i in IndexPath(item: i, section: s) } }
         let oldSections = sections
@@ -109,6 +116,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             }, completion: nil)
         }
     }
+
     private var sections: [Section] = (0..<Const.numberOfSections).map { _ in Section(items: (0..<Const.numberOfItemsForEachSection).map { $0 }) }
 }
 
@@ -116,9 +124,11 @@ extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sections[section].items.count
     }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         cell.backgroundColor = .white
@@ -127,6 +137,7 @@ extension ViewController: UICollectionViewDataSource {
         #endif
         return cell
     }
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseID, for: indexPath)
         if let v = v as? HeaderView {
@@ -153,6 +164,7 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
             return Const.itemSize1
         }
     }
+
     func collectionView(_ collectionView: UICollectionView, hshlSizeForHeaderAtSection section: Int) -> CGSize {
         return Const.headerSize
     }
@@ -166,6 +178,7 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, hshlHeaderInsetsAtSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: Const.spacingForItems, bottom: 20, right: Const.spacingForItems)
     }
+
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
     }

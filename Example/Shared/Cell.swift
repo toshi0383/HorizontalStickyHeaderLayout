@@ -13,6 +13,7 @@ final class Cell: UICollectionViewCell {
     #if os(tvOS)
     @IBOutlet private weak var imageview: UIImageView!
     private var task: URLSessionTask?
+
     var thumbnailURL: URL! {
         didSet {
             self.task?.cancel()
@@ -27,6 +28,7 @@ final class Cell: UICollectionViewCell {
             task.resume()
         }
     }
+
     override var canBecomeFocused: Bool {
         return true
     }

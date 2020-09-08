@@ -13,16 +13,20 @@ final class HeaderView: UICollectionReusableView {
     @IBOutlet weak var label: UILabel?
     @IBOutlet weak var container: UIView?
     @IBOutlet weak var containerTop: NSLayoutConstraint?
+
     func popHeader() {
         updateContainerTop(-20)
     }
+
     func unpopHeader() {
         updateContainerTop(0)
     }
+
     private func updateContainerTop(_ constant: CGFloat) {
         guard let containerTop = containerTop, containerTop.constant != constant else {
             return
         }
+
         containerTop.constant = constant
         self.layoutIfNeeded()
     }

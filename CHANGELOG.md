@@ -1,3 +1,8 @@
+## 0.5.1
+
+* Switched fatalError to assertionFailure
+  - https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/15 by [@airspeed](https://github.com/airspeed)
+
 ## 0.5.0
 
 ##### Breaking

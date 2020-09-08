@@ -142,11 +142,9 @@ extension ViewController: UICollectionViewDataSource {
         let v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseID, for: indexPath)
         if let v = v as? HeaderView {
             v.label?.text = "\(indexPath.section)"
-            let backgroundColor: UIColor = indexPath.section % 2 == 0 ? .orange : .green
             #if os(tvOS)
+                let backgroundColor: UIColor = indexPath.section % 2 == 0 ? .orange : .green
                 v.container?.backgroundColor = backgroundColor
-            #else
-                v.backgroundColor = backgroundColor
             #endif
         }
         return v

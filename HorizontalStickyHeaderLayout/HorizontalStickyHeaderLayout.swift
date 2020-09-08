@@ -51,10 +51,12 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             }
         }
         guard let delegate = delegate else {
-            fatalError("Delegate is not set.")
+            assertionFailure("Delegate is not set.")
+            return
         }
         guard let cv = collectionView else {
-            fatalError("collectionView is not set.")
+            assertionFailure("collectionView is not set.")
+            return
         }
 
         // reset

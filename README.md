@@ -99,8 +99,8 @@ pod "HorizontalStickyHeaderLayout"
 ```
 
 # Development
-- Xcode11.3.1
-- Swift5.1.3
+- Xcode 12
+- Swift 5.3
 
 # License
 MIT

@@ -55,7 +55,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             return
         }
         guard let cv = collectionView else {
-            assertionFailure("collectionView is not set.")
+            assertionFailure("CollectionView is not set.")
             return
         }
 
@@ -103,7 +103,8 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     }
     public override var collectionViewContentSize: CGSize {
         guard let cv = collectionView, let delegate = delegate else {
-            fatalError()
+            assertionFailure("CollectionView or delegate is not set.")
+            return .zero
         }
         let maxX = cacheForItems.last?.frame.maxX ?? 0
         let lastSection = cv.numberOfSections - 1
@@ -122,7 +123,8 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
 
     public override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         guard let cv = collectionView else {
-            fatalError()
+            assertionFailure("CollectionView is not set.")
+            return super.invalidationContext(forBoundsChange: newBounds)
         }
 
         let oldBounds = cv.bounds
@@ -142,7 +144,8 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     /// - returns: UICollectionViewLayoutAttributes for each sections
     private func getAttributesForHeaders() -> [UICollectionViewLayoutAttributes] {
         guard let delegate = delegate, let cv = collectionView else {
-            fatalError()
+            assertionFailure("CollectionView or delegate is not set.")
+            return []
         }
         var attributes = [UICollectionViewLayoutAttributes]()
         var poppingHeaderSections: [Int] = []

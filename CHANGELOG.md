@@ -1,3 +1,8 @@
+## 0.5.2
+
+* Replaced some more fatalErrors by assertionFailures
+  - https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/16 by [@d4rkd3v1l](https://github.com/d4rkd3v1l)
+
 ## 0.5.1
 
 * Switched fatalError to assertionFailure

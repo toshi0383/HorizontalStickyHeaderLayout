@@ -1,3 +1,9 @@
+## RC
+
+##### Breaking
+
+* pin header at left edge in first section #18
+
 ## 0.6.0
 
 * Support Swift Package Manager https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/17

@@ -1,3 +1,7 @@
+## 0.6.0
+
+* Support Swift Package Manager https://github.com/toshi0383/HorizontalStickyHeaderLayout/pull/17
+
 ## 0.5.2
 
 * Replaced some more fatalErrors by assertionFailures

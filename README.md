@@ -5,7 +5,7 @@ Horizontal UICollectionViewLayout with Sticky HeaderView
 ![](https://github.com/toshi0383/assets/blob/master/HorizontalStickyHeaderLayout/hshl-iphone7.gif)
 
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20tvOS-blue.svg)
-[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange.svg)](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-brightgreen.svg)](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app)
 [![Cocoapods](https://img.shields.io/badge/Cocoapods-compatible-brightgreen.svg)](https://cocoapods.org)
 [![pod](https://img.shields.io/cocoapods/v/HorizontalStickyHeaderLayout.svg?style=flat)](https://cocoapods.org/pods/HorizontalStickyHeaderLayout)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat

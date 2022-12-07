@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1FA4C9D01F87D24D00566F8A /* HorizontalStickyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7C60E1F87AAC00094F770 /* HorizontalStickyHeaderLayout.swift */; };
 		1FA4C9F31F87D6B600566F8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4C9ED1F87D6B000566F8A /* ViewController.swift */; };
 		1FA4C9F41F87D6B600566F8A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4C9EE1F87D6B000566F8A /* Cell.swift */; };
 		1FA4C9F51F87D6B600566F8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4C9EF1F87D6B000566F8A /* AppDelegate.swift */; };
@@ -24,9 +23,10 @@
 		1FA4CA2F1F87D85B00566F8A /* HorizontalStickyHeaderLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */; };
 		1FA4CA301F87D85B00566F8A /* HorizontalStickyHeaderLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FA4CA351F87D8D300566F8A /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA4CA341F87D8D300566F8A /* HeaderView.xib */; };
-		1FA7C5E81F875DD50094F770 /* HorizontalStickyHeaderLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA7C5E61F875DD50094F770 /* HorizontalStickyHeaderLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FE7F57B1FA82A180003B24B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7F57A1FA82A180003B24B /* HeaderView.swift */; };
 		1FE7F57C1FA82A180003B24B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7F57A1FA82A180003B24B /* HeaderView.swift */; };
+		8A65FBFD2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65FBFA2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift */; };
+		8A65FBFE2940D7CF007DE2B8 /* HorizontalStickyHeaderLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A65FBFB2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,10 +86,10 @@
 		1FA4CA191F87D72D00566F8A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FA4CA341F87D8D300566F8A /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HorizontalStickyHeaderLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FA7C5E61F875DD50094F770 /* HorizontalStickyHeaderLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalStickyHeaderLayout.h; sourceTree = "<group>"; };
-		1FA7C5E71F875DD50094F770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1FA7C60E1F87AAC00094F770 /* HorizontalStickyHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStickyHeaderLayout.swift; sourceTree = "<group>"; };
 		1FE7F57A1FA82A180003B24B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		8A65FBFA2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStickyHeaderLayout.swift; sourceTree = "<group>"; };
+		8A65FBFB2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalStickyHeaderLayout.h; sourceTree = "<group>"; };
+		8A65FBFC2940D7CE007DE2B8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +155,8 @@
 		1FA7C5D91F875DD50094F770 = {
 			isa = PBXGroup;
 			children = (
+				8A65FBF92940D7CE007DE2B8 /* HorizontalStickyHeaderLayout */,
 				1FA7C5F51F875E1F0094F770 /* Example */,
-				1FA7C5E51F875DD50094F770 /* HorizontalStickyHeaderLayout */,
 				1FA7C5E41F875DD50094F770 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -171,16 +171,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1FA7C5E51F875DD50094F770 /* HorizontalStickyHeaderLayout */ = {
-			isa = PBXGroup;
-			children = (
-				1FA7C5E61F875DD50094F770 /* HorizontalStickyHeaderLayout.h */,
-				1FA7C60E1F87AAC00094F770 /* HorizontalStickyHeaderLayout.swift */,
-				1FA7C5E71F875DD50094F770 /* Info.plist */,
-			);
-			path = HorizontalStickyHeaderLayout;
-			sourceTree = "<group>";
-		};
 		1FA7C5F51F875E1F0094F770 /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +181,17 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		8A65FBF92940D7CE007DE2B8 /* HorizontalStickyHeaderLayout */ = {
+			isa = PBXGroup;
+			children = (
+				8A65FBFA2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift */,
+				8A65FBFB2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.h */,
+				8A65FBFC2940D7CE007DE2B8 /* Info.plist */,
+			);
+			name = HorizontalStickyHeaderLayout;
+			path = Sources/HorizontalStickyHeaderLayout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -198,7 +199,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA7C5E81F875DD50094F770 /* HorizontalStickyHeaderLayout.h in Headers */,
+				8A65FBFE2940D7CF007DE2B8 /* HorizontalStickyHeaderLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA4C9D01F87D24D00566F8A /* HorizontalStickyHeaderLayout.swift in Sources */,
+				8A65FBFD2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,7 +605,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HorizontalStickyHeaderLayout/Info.plist;
+				INFOPLIST_FILE = Sources/HorizontalStickyHeaderLayout/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.HorizontalStickyHeaderLayout;
@@ -629,7 +630,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HorizontalStickyHeaderLayout/Info.plist;
+				INFOPLIST_FILE = Sources/HorizontalStickyHeaderLayout/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.HorizontalStickyHeaderLayout;

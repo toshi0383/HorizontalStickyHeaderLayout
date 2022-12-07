@@ -88,10 +88,9 @@ See [Example](Example) for recommended implementation.
 ```
 
 # Install
-## Carthage
-```
-github "toshi0383/HorizontalStickyHeaderLayout"
-```
+## SwiftPM
+
+Install via Xcode.
 
 ## CocoaPods
 ```

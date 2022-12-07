@@ -88,14 +88,19 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         for s in sections {
             s.items.remove(at: 2)
         }
+
         let add1 = (0..<sections.count).map { IndexPath(item: sections[$0].items.count, section: $0) }
+
         for s in sections {
             s.items.append(s.items.count)
         }
+
         let add2 = (0..<sections.count).map { IndexPath(item: sections[$0].items.count, section: $0) }
+
         for s in sections {
             s.items.append(s.items.count)
         }
+
         collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: deletes)
             self.collectionView.insertItems(at: add1 + add2)
@@ -122,11 +127,11 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
+        sections.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count
+        sections[section].items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -164,21 +169,21 @@ extension ViewController: HorizontalStickyHeaderLayoutDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, hshlSizeForHeaderAtSection section: Int) -> CGSize {
-        return Const.headerSize
+        Const.headerSize
     }
 
     // Spacing
     func collectionView(_ collectionView: UICollectionView, hshlMinSpacingForCellsAtSection section: Int) -> CGFloat {
-        return Const.spacingForItems
+        Const.spacingForItems
     }
 
     // Insets
     func collectionView(_ collectionView: UICollectionView, hshlHeaderInsetsAtSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: Const.spacingForItems, bottom: 20, right: Const.spacingForItems)
+        UIEdgeInsets(top: 20, left: Const.spacingForItems, bottom: 20, right: Const.spacingForItems)
     }
 
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
+        UIEdgeInsets(top: 0, left: Const.spacingForItems, bottom: 0, right: section == 4 ? 0 : Const.spacingForItems)
     }
 
     func getHeaders(poppingHeadersIndexPaths indexPaths: [IndexPath]) -> (pop: [HeaderView], unpop: [HeaderView]) {

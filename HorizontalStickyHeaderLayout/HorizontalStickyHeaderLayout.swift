@@ -19,7 +19,7 @@ private struct Layout {
 }
 
 @objc
-public protocol HorizontalStickyHeaderLayoutDelegate: class {
+public protocol HorizontalStickyHeaderLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, hshlSizeForItemAtIndexPath indexPath: IndexPath) -> CGSize
     func collectionView(_ collectionView: UICollectionView, hshlSectionInsetsAtSection section: Int) -> UIEdgeInsets
     func collectionView(_ collectionView: UICollectionView, hshlMinSpacingForCellsAtSection section: Int) -> CGFloat
@@ -87,20 +87,25 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
             x += sectionInsets.right
         }
     }
+
     public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let forItems = cacheForItems.filter { rect.intersects($0.frame) }.map { $0.attributes }
         let forHeaders = getAttributesForHeaders()
         return forItems + forHeaders
     }
+
     public override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return cacheForItems.first { $0.indexPath == indexPath }?.attributes
+        cacheForItems.first { $0.indexPath == indexPath }?.attributes
     }
+
     public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard elementKind == UICollectionView.elementKindSectionHeader else {
             return nil
         }
+
         return getAttributesForHeaders().first { $0.indexPath == indexPath }
     }
+
     public override var collectionViewContentSize: CGSize {
         guard let cv = collectionView, let delegate = delegate else {
             assertionFailure("CollectionView or delegate is not set.")
@@ -117,9 +122,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     /////////////////////////////////////////////////
     // Note: Needed for sticky headers while scroling
 
-    override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
-    }
+    override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool { true }
 
     public override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         guard let cv = collectionView else {
@@ -143,17 +146,20 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
     /// Calculates sticky frame for header
     /// - returns: UICollectionViewLayoutAttributes for each sections
     private func getAttributesForHeaders() -> [UICollectionViewLayoutAttributes] {
-        guard let delegate = delegate, let cv = collectionView else {
+        guard let delegate, let cv = collectionView else {
             assertionFailure("CollectionView or delegate is not set.")
             return []
         }
+
         var attributes = [UICollectionViewLayoutAttributes]()
         var poppingHeaderSections: [Int] = []
+
         for section in 0..<cv.numberOfSections {
             var x: CGFloat = 0
             let headerSize = delegate.collectionView(cv, hshlSizeForHeaderAtSection: section)
             let headerInsets = delegate.collectionView(cv, hshlHeaderInsetsAtSection: section)
             let itemsInsets = delegate.collectionView(cv, hshlSectionInsetsAtSection: section)
+
             do {
                 let numberOfItems = cv.numberOfItems(inSection: section)
                 if let firstItemAttributes = cacheForItems.first(where: { $0.indexPath == IndexPath(item: 0, section: section) }),
@@ -166,6 +172,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                     x += min(xByLeftBoundary, xByRightBoundary)
                 }
             }
+
             func shouldPopHeader() -> Bool {
                 #if os(tvOS)
                     if let focusedItemFrame = (0..<cv.numberOfItems(inSection: section)).map({ IndexPath(item: $0, section: section) }).compactMap(cv.cellForItem(at:)).first(where: { $0.isFocused })?.frame {
@@ -187,6 +194,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                     return false
                 #endif
             }
+
             if shouldPopHeader() {
                 poppingHeaderSections.append(section)
             } else {
@@ -194,16 +202,24 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                     poppingHeaderSections.remove(at: s)
                 }
             }
-            let frame = CGRect(x: x,
-                               y: headerInsets.top,
-                               width: headerSize.width,
-                               height: headerSize.height)
-            let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                                        with: IndexPath(item: 0, section: section))
+
+            let frame = CGRect(
+                x: x,
+                y: headerInsets.top,
+                width: headerSize.width,
+                height: headerSize.height
+            )
+
+            let attr = UICollectionViewLayoutAttributes(
+                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                with: IndexPath(item: 0, section: section)
+            )
+
             attr.frame = frame
             attributes.append(attr)
             x += headerInsets.right
         }
+
         self.poppingHeaderIndexPaths = poppingHeaderSections.map { IndexPath(item: 0, section: $0) }
         if !skipDidUpdatePoppingHeaderDelegateCall {
             delegate.collectionView?(cv, hshlDidUpdatePoppingHeaderIndexPaths: self.poppingHeaderIndexPaths)

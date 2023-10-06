@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,13 @@
 		1FE7F57C1FA82A180003B24B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7F57A1FA82A180003B24B /* HeaderView.swift */; };
 		8A65FBFD2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65FBFA2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift */; };
 		8A65FBFE2940D7CF007DE2B8 /* HorizontalStickyHeaderLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A65FBFB2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.h */; };
+		8A9720482ACFC98E0080A1C7 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9720472ACFC98E0080A1C7 /* RealityKitContent */; };
+		8A97204A2ACFC98E0080A1C7 /* Example_visionOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9720492ACFC98E0080A1C7 /* Example_visionOSApp.swift */; };
+		8A97204C2ACFC98E0080A1C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97204B2ACFC98E0080A1C7 /* ContentView.swift */; };
+		8A97204E2ACFC98F0080A1C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A97204D2ACFC98F0080A1C7 /* Assets.xcassets */; };
+		8A9720512ACFC98F0080A1C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9720502ACFC98F0080A1C7 /* Preview Assets.xcassets */; };
+		8A9720572ACFC9A10080A1C7 /* HorizontalStickyHeaderLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */; };
+		8A9720582ACFC9A10080A1C7 /* HorizontalStickyHeaderLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,13 @@
 			remoteInfo = HorizontalStickyHeaderLayout;
 		};
 		1FA4CA311F87D85B00566F8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FA7C5DA1F875DD50094F770 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FA7C5E21F875DD50094F770;
+			remoteInfo = HorizontalStickyHeaderLayout;
+		};
+		8A9720592ACFC9A10080A1C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FA7C5DA1F875DD50094F770 /* Project object */;
 			proxyType = 1;
@@ -69,6 +83,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8A97205B2ACFC9A10080A1C7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8A9720582ACFC9A10080A1C7 /* HorizontalStickyHeaderLayout.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +115,13 @@
 		8A65FBFA2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStickyHeaderLayout.swift; sourceTree = "<group>"; };
 		8A65FBFB2940D7CE007DE2B8 /* HorizontalStickyHeaderLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalStickyHeaderLayout.h; sourceTree = "<group>"; };
 		8A65FBFC2940D7CE007DE2B8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9720432ACFC98E0080A1C7 /* Example_visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9720462ACFC98E0080A1C7 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		8A9720492ACFC98E0080A1C7 /* Example_visionOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_visionOSApp.swift; sourceTree = "<group>"; };
+		8A97204B2ACFC98E0080A1C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8A97204D2ACFC98F0080A1C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A9720502ACFC98F0080A1C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8A9720522ACFC98F0080A1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +145,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9720402ACFC98E0080A1C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9720572ACFC9A10080A1C7 /* HorizontalStickyHeaderLayout.framework in Frameworks */,
+				8A9720482ACFC98E0080A1C7 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +198,10 @@
 			children = (
 				8A65FBF92940D7CE007DE2B8 /* HorizontalStickyHeaderLayout */,
 				1FA7C5F51F875E1F0094F770 /* Example */,
+				8A9720442ACFC98E0080A1C7 /* Example_visionOS */,
+				8A9720452ACFC98E0080A1C7 /* Packages */,
 				1FA7C5E41F875DD50094F770 /* Products */,
+				8A9720562ACFC9A10080A1C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +211,7 @@
 				1FA4C9DA1F87D5C200566F8A /* Example_iOS.app */,
 				1FA4C9FA1F87D6C700566F8A /* Example_tvOS.app */,
 				1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */,
+				8A9720432ACFC98E0080A1C7 /* Example_visionOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +235,41 @@
 			);
 			name = HorizontalStickyHeaderLayout;
 			path = Sources/HorizontalStickyHeaderLayout;
+			sourceTree = "<group>";
+		};
+		8A9720442ACFC98E0080A1C7 /* Example_visionOS */ = {
+			isa = PBXGroup;
+			children = (
+				8A9720492ACFC98E0080A1C7 /* Example_visionOSApp.swift */,
+				8A97204B2ACFC98E0080A1C7 /* ContentView.swift */,
+				8A97204D2ACFC98F0080A1C7 /* Assets.xcassets */,
+				8A9720522ACFC98F0080A1C7 /* Info.plist */,
+				8A97204F2ACFC98F0080A1C7 /* Preview Content */,
+			);
+			path = Example_visionOS;
+			sourceTree = "<group>";
+		};
+		8A9720452ACFC98E0080A1C7 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				8A9720462ACFC98E0080A1C7 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		8A97204F2ACFC98F0080A1C7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8A9720502ACFC98F0080A1C7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8A9720562ACFC9A10080A1C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,13 +342,35 @@
 			productReference = 1FA7C5E31F875DD50094F770 /* HorizontalStickyHeaderLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		8A9720422ACFC98E0080A1C7 /* Example_visionOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A9720552ACFC98F0080A1C7 /* Build configuration list for PBXNativeTarget "Example_visionOS" */;
+			buildPhases = (
+				8A97203F2ACFC98E0080A1C7 /* Sources */,
+				8A9720402ACFC98E0080A1C7 /* Frameworks */,
+				8A9720412ACFC98E0080A1C7 /* Resources */,
+				8A97205B2ACFC9A10080A1C7 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A97205A2ACFC9A10080A1C7 /* PBXTargetDependency */,
+			);
+			name = Example_visionOS;
+			packageProductDependencies = (
+				8A9720472ACFC98E0080A1C7 /* RealityKitContent */,
+			);
+			productName = Example_visionOS;
+			productReference = 8A9720432ACFC98E0080A1C7 /* Example_visionOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1FA7C5DA1F875DD50094F770 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = toshi0383;
 				TargetAttributes = {
@@ -286,6 +388,9 @@
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+					};
+					8A9720422ACFC98E0080A1C7 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -305,6 +410,7 @@
 				1FA7C5E21F875DD50094F770 /* HorizontalStickyHeaderLayout */,
 				1FA4C9D91F87D5C200566F8A /* Example_iOS */,
 				1FA4C9F91F87D6C700566F8A /* Example_tvOS */,
+				8A9720422ACFC98E0080A1C7 /* Example_visionOS */,
 			);
 		};
 /* End PBXProject section */
@@ -334,6 +440,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A9720412ACFC98E0080A1C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9720512ACFC98F0080A1C7 /* Preview Assets.xcassets in Resources */,
+				8A97204E2ACFC98F0080A1C7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +485,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8A97203F2ACFC98E0080A1C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A97204C2ACFC98E0080A1C7 /* ContentView.swift in Sources */,
+				8A97204A2ACFC98E0080A1C7 /* Example_visionOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -382,6 +506,11 @@
 			isa = PBXTargetDependency;
 			target = 1FA7C5E21F875DD50094F770 /* HorizontalStickyHeaderLayout */;
 			targetProxy = 1FA4CA311F87D85B00566F8A /* PBXContainerItemProxy */;
+		};
+		8A97205A2ACFC9A10080A1C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FA7C5E21F875DD50094F770 /* HorizontalStickyHeaderLayout */;
+			targetProxy = 8A9720592ACFC9A10080A1C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -414,7 +543,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.toshi0383.Example-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -432,7 +564,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.toshi0383.Example-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -450,7 +585,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/tvOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.toshi0383.Example-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -468,7 +606,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example/tvOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.toshi0383.Example-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -586,7 +727,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphonesimulator iphoneos";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -607,14 +749,22 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/HorizontalStickyHeaderLayout/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.HorizontalStickyHeaderLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
@@ -632,14 +782,96 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/HorizontalStickyHeaderLayout/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.toshi0383.HorizontalStickyHeaderLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "$(AVAILABLE_PLATFORMS)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,3";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		8A9720532ACFC98F0080A1C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Example_visionOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 5WSE8X23BF;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.toshi0383.Example-visionOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		8A9720542ACFC98F0080A1C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Example_visionOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 5WSE8X23BF;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.toshi0383.Example-visionOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
@@ -682,7 +914,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8A9720552ACFC98F0080A1C7 /* Build configuration list for PBXNativeTarget "Example_visionOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A9720532ACFC98F0080A1C7 /* Debug */,
+				8A9720542ACFC98F0080A1C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A9720472ACFC98E0080A1C7 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1FA7C5DA1F875DD50094F770 /* Project object */;
 }

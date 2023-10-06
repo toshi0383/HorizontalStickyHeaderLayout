@@ -200,7 +200,7 @@ public final class HorizontalStickyHeaderLayout: UICollectionViewLayout {
                     } else {
                         return false
                     }
-                #elseif os(iOS)
+                #else
                     return false
                 #endif
             }
